@@ -155,7 +155,7 @@ jobs:
         swap-size-gb: 12
 
     - name: Check Build Branch - Step 1
-      if: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-12.1' }}
+      if: ${{ github.event.inputs.MANIFEST_BRANCH == 'fox_10.0' }}
       run: |
         PATH=~/bin:$PATH
         cd ${{ steps.pwd.outputs.pwd }}
@@ -163,7 +163,7 @@ jobs:
         repopick 5405 5540
 
     - name: Check Build Branch - Step 2
-      if: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-5.1' }}
+      if: ${{ github.event.inputs.MANIFEST_BRANCH == 'fox_9.0' }}
       run: |
         PATH=~/bin:$PATH
         cd ${{ steps.pwd.outputs.pwd }}
