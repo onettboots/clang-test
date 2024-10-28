@@ -1,0 +1,47 @@
+name: Build Clang
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y bc \
+            binutils-dev \
+            bison \
+            build-essential \
+            ca-certificates \
+            ccache \
+            clang \
+            cmake \
+            curl \
+            file \
+            flex \
+            git \
+            libelf-dev \
+            libssl-dev \
+            lld \
+            make \
+            ninja-build \
+            python3-dev \
+            texinfo \
+            u-boot-tools \
+            xz-utils \
+            zlib1g-dev
+
+    - name: Build Clang
+      run: |
+        mkdir build
+        cd build
+        git clone https://github.com/onettboots/boolx-clang-build -b test
+        cd boolx-clang-build
+        git config --global user.name "onettboots"
+        git config --global user.email "blackcocopet@gmail.com"
+        git clone https://github.com/llvm/llvm-project -b llvmorg-20-init
+        bash build-toolchain.sh
