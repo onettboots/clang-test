@@ -33,7 +33,9 @@ jobs:
             texinfo \
             u-boot-tools \
             xz-utils \
-            zlib1g-dev
+            zlib1g-dev \
+            tar \
+            curl
 
     - name: Build Clang
       run: |
@@ -45,3 +47,5 @@ jobs:
         git config --global user.email "blackcocopet@gmail.com"
         git clone https://github.com/llvm/llvm-project -b llvmorg-20-init
         bash build-toolchain.sh
+        tar -czf clang20.tar.gz install
+        curl bashupload.com -T clang20.tar.gz
