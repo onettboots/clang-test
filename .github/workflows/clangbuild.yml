@@ -39,13 +39,16 @@ jobs:
 
     - name: Build Clang
       run: |
+        sudo fallocate -l 32G /swapfile
+        sudo chmod 600 /swapfile
+        sudo mkswap /swapfile
+        sudo swapon /swapfile
         mkdir build
         cd build
         git clone https://github.com/onettboots/boolx-clang-build -b test
         cd boolx-clang-build
         git config --global user.name "onettboots"
         git config --global user.email "blackcocopet@gmail.com"
-        git clone https://github.com/llvm/llvm-project -b llvmorg-20-init
         bash build-toolchain.sh
         tar -czf clang20.tar.gz install
         curl bashupload.com -T clang20.tar.gz
