@@ -35,7 +35,8 @@ jobs:
             xz-utils \
             zlib1g-dev \
             tar \
-            curl
+            curl \
+            patchelf
 
     - name: Build Clang
       run: |
@@ -45,10 +46,10 @@ jobs:
         sudo swapon /swapfile
         mkdir build
         cd build
-        git clone https://github.com/onettboots/boolx-clang-build -b test
+        git clone https://github.com/onettboots/boolx-clang-build -b zb
         cd boolx-clang-build
         git config --global user.name "onettboots"
         git config --global user.email "blackcocopet@gmail.com"
-        bash build-toolchain.sh
+        bash clang-builder.sh
         tar -czf clang20.tar.gz install
         curl bashupload.com -T clang20.tar.gz
