@@ -38,7 +38,7 @@ jobs:
             curl \
             patchelf
 
-    - name: Build Clang
+    - name: Build Clang 22
       run: |
         sudo fallocate -l 8G /swapfile
         sudo chmod 600 /swapfile
