@@ -37,7 +37,9 @@ jobs:
             tar \
             curl \
             patchelf \
-            megatools
+            megatools \
+            sshpass \
+            zstd
 
     - name: Build Clang 22.0.0
       run: |
@@ -52,8 +54,15 @@ jobs:
         git config --global user.name "onettboots"
         git config --global user.email "blackcocopet@gmail.com"
         bash clang-builder.sh
-        tar -czf clang22.tar.gz install
+        tar --zstd -cf clang22-081025.tar.zst install
         #curl bashupload.com -T clang20.tar.gz
-        megadl https://mega.nz/file/PgFASLLI#ALHx8iXazBkgkKQFQ9bVY26DKcFNZ8pSkcgpOelWJwE
-        tar -xf ssh.tar.gz
-        ssh -i onettboots clang22.tar.gz onettboots@192.168.100.228:/home/onettboots/toolchain
+        #megadl https://mega.nz/file/PgFASLLI#ALHx8iXazBkgkKQFQ9bVY26DKcFNZ8pSkcgpOelWJwE
+        #tar -xf ssh.tar.gz
+        #ssh -i onettboots clang22.tar.gz onettboots@192.168.100.228:/home/onettboots/toolchain
+        FILE="clang22-081025.tar.zst"
+        USER="onettboots"
+        PASSWORD="Nazma4242@"
+        HOST="frs.sourceforge.net"
+        REMOTE_DIR="/home/frs/project/boolx/clang/"
+
+        sshpass -p "$PASSWORD" scp "$FILE" "$USER@$HOST:$REMOTE_DIR"
