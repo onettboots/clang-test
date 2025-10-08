@@ -53,6 +53,7 @@ jobs:
         cd boolx-clang-build
         git config --global user.name "onettboots"
         git config --global user.email "blackcocopet@gmail.com"
+        git clone https://github.com/llvm/llvm-project -b llvmorg-22-init --depth 1
         bash clang-builder.sh
         tar --zstd -cf clang22-081025.tar.zst install
         #curl bashupload.com -T clang20.tar.gz
