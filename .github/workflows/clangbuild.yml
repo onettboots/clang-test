@@ -41,7 +41,7 @@ jobs:
             sshpass \
             zstd
 
-    - name: Build Clang 22.0.0
+    - name: Build Clang 22.0.0 init
       run: |
         sudo fallocate -l 8G /swapfile
         sudo chmod 600 /swapfile
@@ -64,5 +64,4 @@ jobs:
         PASSWORD="Nazma4242@"
         HOST="frs.sourceforge.net"
         REMOTE_DIR="/home/frs/project/boolx/clang/"
-
         sshpass -p "$PASSWORD" scp "$FILE" "$USER@$HOST:$REMOTE_DIR"
