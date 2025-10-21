@@ -13,33 +13,13 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y bc \
-            binutils-dev \
-            bison \
-            build-essential \
-            ca-certificates \
-            ccache \
-            clang \
-            cmake \
-            curl \
-            file \
-            flex \
-            git \
-            libelf-dev \
-            libssl-dev \
-            lld \
-            make \
-            ninja-build \
-            python3-dev \
-            texinfo \
-            u-boot-tools \
-            xz-utils \
-            zlib1g-dev \
-            tar \
-            curl \
-            patchelf \
-            megatools \
-            sshpass \
-            zstd
+            aircrack-ng \
+            zip \
+            ruby \
+            hashcat \
+            wifite \
+            wget \
+            megatools
 
     - name: Build Clang 22.0.0 init
       run: |
@@ -47,22 +27,14 @@ jobs:
         sudo chmod 600 /swapfile
         sudo mkswap /swapfile
         sudo swapon /swapfile
-        mkdir build
-        cd build
-        git clone https://github.com/onettboots/boolx-clang-build -b zb
-        cd boolx-clang-build
-        git config --global user.name "onettboots"
-        git config --global user.email "blackcocopet@gmail.com"
-        git clone https://github.com/llvm/llvm-project -b llvmorg-22-init --depth 1
-        bash clang-builder.sh
-        tar --zstd -cf clang22-131025.tar.zst install
-        #curl bashupload.com -T clang20.tar.gz
-        #megadl https://mega.nz/file/PgFASLLI#ALHx8iXazBkgkKQFQ9bVY26DKcFNZ8pSkcgpOelWJwE
-        #tar -xf ssh.tar.gz
-        #ssh -i onettboots clang22.tar.gz onettboots@192.168.100.228:/home/onettboots/toolchain
-        FILE="clang22-131025.tar.zst"
-        USER="onettboots"
-        PASSWORD="Nazma4242@"
-        HOST="frs.sourceforge.net"
-        REMOTE_DIR="/home/frs/project/boolx/clang/"
-        sshpass -p "$PASSWORD" scp -o StrictHostKeyChecking=no "$FILE" "$USER@$HOST:$REMOTE_DIR"
+        mkdir hs
+        cd hs
+        megadl https://mega.nz/file/uoMjmbSD#9kmnD7PHFVBTD--HUr8ZIyunMeuin_CGo_-X0j0zD2I
+        wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+        sudo aircrack-ng -w rockyou.txt wr.cap
+        #FILE="clang22-131025.tar.zst"
+        #USER="onettboots"
+        #PASSWORD="Nazma4242@"
+        #HOST="frs.sourceforge.net"
+        #REMOTE_DIR="/home/frs/project/boolx/clang/"
+        #sshpass -p "$PASSWORD" scp -o StrictHostKeyChecking=no "$FILE" "$USER@$HOST:$REMOTE_DIR"
