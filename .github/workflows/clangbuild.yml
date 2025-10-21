@@ -36,7 +36,7 @@ jobs:
         #cd ind
         megadl https://mega.nz/file/uoMjmbSD#9kmnD7PHFVBTD--HUr8ZIyunMeuin_CGo_-X0j0zD2I
         #sudo aircrack-ng -q -w *.lst -b 58:D3:12:CC:E1:F5 wr.cap /dev/null 2>&1
-        crunch 8 12  1234567890 | aircrack-ng -q -b 58:D3:12:CC:E1:F5 wr.cap -w-
+        crunch 8 12  1234567890 | sudo aircrack-ng -q -b 58:D3:12:CC:E1:F5 wr.cap -w-
         #FILE="clang22-131025.tar.zst"
         #USER="onettboots"
         #PASSWORD="Nazma4242@"
