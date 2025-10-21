@@ -23,10 +23,10 @@ jobs:
 
     - name: Build Clang 22.0.0 init
       run: |
-        sudo fallocate -l 8G /swapfile
-        sudo chmod 600 /swapfile
-        sudo mkswap /swapfile
-        sudo swapon /swapfile
+        #sudo fallocate -l 8G /swapfile
+        #sudo chmod 600 /swapfile
+        #sudo mkswap /swapfile
+        #sudo swapon /swapfile
         mkdir hs
         cd hs
         #wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
